@@ -1,5 +1,11 @@
 import java.util.*;
 
+class space {
+    public int above;
+    public int below;
+    public int left;
+    public int right;
+}
 public class maze {
 
     public static void main(String[] args) {
@@ -9,6 +15,7 @@ public class maze {
         in.close();
         for (int i = 0; i < n; i++) System.out.print(" _");
         //Prim or Kruskal
+        space[][] maze = new space[n][n];
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
 }
