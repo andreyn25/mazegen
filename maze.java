@@ -1,10 +1,8 @@
 import java.util.*;
 
 class space {
-    public double above;
-    public double below;
-    public double left;
-    public double right;
+    public double above, below, left, right;
+    public boolean ca, cb, cl, cr;
 }
 public class maze {
 
@@ -21,6 +19,9 @@ public class maze {
             for (int j = 0; j < n; j++) {
                 maze[i][j] = new space();
                 maze[i][j].above = Math.random();
+                maze[i][j].below = Math.random();
+                maze[i][j].left = Math.random();
+                maze[i][j].right = Math.random();
             }
         }
 
