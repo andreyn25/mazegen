@@ -47,6 +47,7 @@ public class maze {
             maze[i][n-1].below = Math.random();
         }
 
+        //Initialize n-2 square
         for (int i = 1; i < n-1; i++) {
             for (int j = 1; j < n-1; j++) {
                 maze[i][j].above = Math.random();
