@@ -1,10 +1,10 @@
 import java.util.*;
 
 class space {
-    public int above;
-    public int below;
-    public int left;
-    public int right;
+    public double above;
+    public double below;
+    public double left;
+    public double right;
 }
 public class maze {
 
@@ -14,8 +14,16 @@ public class maze {
         int n = in.nextInt();
         in.close();
         for (int i = 0; i < n; i++) System.out.print(" _");
-        //Prim or Kruskal
+
+        //Initialize maze
         space[][] maze = new space[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                maze[i][j] = new space();
+                maze[i][j].above = Math.random();
+            }
+        }
+
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
 }
