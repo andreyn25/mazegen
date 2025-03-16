@@ -57,6 +57,8 @@ public class maze {
             }
         }
 
+        //Now to initialize connections by choosing cheapest
+
         //Prim or kruskal
 
         for (int i = 0; i < n; i++) System.out.print(" _");
