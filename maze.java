@@ -63,4 +63,16 @@ public class maze {
 
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
+
+    public int cheapestEdge(space[][] maze, int x, int y) {
+        int cheapest = 0;
+        if (maze[x][y].cl) {
+            
+        }
+
+        maze[x+1][y]
+        maze[x][y-1]
+        maze[x-1][y+1]
+        return 0;   
+    }
 }
