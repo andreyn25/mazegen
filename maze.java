@@ -66,7 +66,8 @@ public class maze {
             double min = Double.MAX_VALUE;
             int sx = 0;
             int sy=0;
-            for (space s: Vt) {
+            for (int i = 0; i < Vt.size(); i++) {
+                space s = Vt.get(i);
                 if (s.y > 0) {
                     if (!maze[sx][sy].ca && s.above<min && !Vt.contains(maze[s.x][s.y-1])) {
                         min = s.above;
@@ -114,6 +115,7 @@ public class maze {
         }
 
         for (int i = 0; i < n; i++) System.out.print(" _");
+        System.out.println();
         for (int i = 0; i < n; i++) {
             System.out.print("|");
             for (int j = 0; j < n; j++) {
@@ -122,6 +124,7 @@ public class maze {
                 if(!maze[i][j].cr) System.out.print("|");
                 else System.out.print(" ");
             }
+            System.out.println();
         }
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
