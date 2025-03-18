@@ -58,9 +58,62 @@ public class maze {
         }
 
         //Now to initialize connections by choosing cheapest
-        //Prim or kruskal
-        
+        //Prim
+        ArrayList<space> Vt = new ArrayList<>();
 
+        while (Vt.size() < n*n) {
+            double min = Double.MAX_VALUE;
+            int sx = 0;
+            int sy=0;
+            for (space s: Vt) {
+                if (!maze[sx][sy].ca && s.above<min && !Vt.contains(maze[s.x][s.y-1])) {
+                    min = s.above;
+                    sx = s.x;
+                    sy = s.y;
+                } if (!maze[sx][sy].cb && s.below<min && !Vt.contains(maze[s.x][s.y+1])) {
+                    min = s.below;
+                    sx = s.x;
+                    sy = s.y;
+                } if (!maze[sx][sy].cl && s.left<min && !Vt.contains(maze[s.x-1][s.y])) {
+                    min = s.left;
+                    sx = s.x;
+                    sy = s.y;
+                } if (!maze[sx][sy].cr && s.right<min && !Vt.contains(maze[s.x][s.y+1])) {
+                    min = s.right;
+                    sx = s.x;
+                    sy = s.y;
+                }
+            }
+
+            if (maze[sx][sy].above == min) {
+                Vt.add(maze[sx][sy-1]);
+                maze[sx][sy].ca = true;
+                maze[sx][sy-1].cb = true;
+            } else if (maze[sx][sy].below == min) {
+                Vt.add(maze[sx][sy+1]);
+                maze[sx][sy].cb = true;
+                maze[sx][sy+1].ca = true;
+            } else if (maze[sx][sy].left == min) {
+                Vt.add(maze[sx-1][sy]);
+                maze[sx][sy].cl = true;
+                maze[sx-1][sy].cr = true;
+            } else {
+                Vt.add(maze[sx+1][sy]);
+                maze[sx][sy].cr = true;
+                maze[sx+1][sy].cl = true;
+            }
+        }
+
+        for (int i = 0; i < n; i++) System.out.print(" _");
+        for (int i = 0; i < n; i++) {
+            System.out.print("|");
+            for (int j = 0; j < n; j++) {
+                if(!maze[i][j].cb) System.out.print("_");
+                else System.out.print(" ");
+                if(!maze[i][j].cr) System.out.print("|");
+                else System.out.print(" ");
+            }
+        }
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
 
