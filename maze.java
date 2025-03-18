@@ -21,12 +21,23 @@ public class maze {
             }
         }
 
+        maze[0][0].right = Math.random();
+        maze[0][0].below = Math.random();
+        for (int i = 1; i < n; i++) {
+            maze[0][i].left = maze[0][i-1].right;
+            maze[0][i].right = Math.random();
+            maze[0][i].below = Math.random();
+            maze[i][0].above = maze[i-1][0].below;
+            maze[0][i].right = Math.random();
+            maze[0][i].below = Math.random();
+        }
+
         //Initialize n-2 square
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             for (int j = 1; j < n; j++) {
-                maze[i][j].above = Math.random();
+                maze[i][j].above = maze[i][j-1].below;
                 maze[i][j].below = Math.random();
-                maze[i][j].left = Math.random();
+                maze[i][j].left = maze[i-1][j].right;
                 maze[i][j].right = Math.random();
             }
         }
@@ -46,9 +57,9 @@ public class maze {
     }
 
     public int cheapestEdge(space[][] maze, int x, int y) {
-        int cheapest = 0;
+        double cheapest = 0;
         if (maze[x][y].cl) {
-            cheapest = maze[x][y].left
+            cheapest = maze[x][y].left;
         }
 
         maze[x+1][y]
