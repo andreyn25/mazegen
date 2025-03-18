@@ -67,7 +67,7 @@ public class maze {
     public int cheapestEdge(space[][] maze, int x, int y) {
         int cheapest = 0;
         if (maze[x][y].cl) {
-            
+            cheapest = maze[x][y].left
         }
 
         maze[x+1][y]
