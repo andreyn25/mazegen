@@ -2,7 +2,10 @@ import java.util.*;
 
 class space {
     public double above, below, left, right;
-    public boolean ca, cb, cl, cr = false;
+    public boolean ca = false;
+    public boolean cb = false;
+    public boolean cr = false;
+    public boolean cl = false;
     public int x, y;
 }
 public class maze {
@@ -53,7 +56,7 @@ public class maze {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 maze[i][j].x = i;
-                maze[i][j].y = i;
+                maze[i][j].y = j;
             }
         }
 
