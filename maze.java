@@ -63,4 +63,22 @@ public class maze {
 
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
+
+    public String[][] mazify (space[][] maze) {
+        String[][] m = new String[maze.length][maze.length];
+        space s = maze[0][0];
+        for (int i = 0; i < maze.length; i++) {
+            for (int j = 0; j < maze.length; j++) {
+                s = maze[i][j];
+                if (!s.cb) {
+                    System.out.print("_");
+                }
+                if (!s.cl) {
+                    System.out.print("|");
+                }
+            }
+            System.out.println("");
+        }
+        return m;
+    }
 }
