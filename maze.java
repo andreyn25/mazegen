@@ -126,7 +126,7 @@ public class maze {
                 if (!s.cb) {
                     System.out.print("_");
                 }
-                if (!s.cl) {
+                if (!s.cr) {
                     System.out.print("|");
                 }
             }
