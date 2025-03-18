@@ -2,7 +2,7 @@ import java.util.*;
 
 class space {
     public double above, below, left, right;
-    public boolean ca, cb, cl, cr;
+    public boolean ca, cb, cl, cr = false;
     public int x, y;
 }
 public class maze {
@@ -66,23 +66,32 @@ public class maze {
             double min = Double.MAX_VALUE;
             int sx = 0;
             int sy=0;
-            for (space s: Vt) {
-                if (!maze[sx][sy].ca && s.above<min && !Vt.contains(maze[s.x][s.y-1])) {
-                    min = s.above;
-                    sx = s.x;
-                    sy = s.y;
-                } if (!maze[sx][sy].cb && s.below<min && !Vt.contains(maze[s.x][s.y+1])) {
-                    min = s.below;
-                    sx = s.x;
-                    sy = s.y;
-                } if (!maze[sx][sy].cl && s.left<min && !Vt.contains(maze[s.x-1][s.y])) {
-                    min = s.left;
-                    sx = s.x;
-                    sy = s.y;
-                } if (!maze[sx][sy].cr && s.right<min && !Vt.contains(maze[s.x][s.y+1])) {
-                    min = s.right;
-                    sx = s.x;
-                    sy = s.y;
+            for (int i = 0; i < Vt.size(); i++) {
+                space s = Vt.get(i);
+                if (s.y > 0) {
+                    if (!maze[sx][sy].ca && s.above<min && !Vt.contains(maze[s.x][s.y-1])) {
+                        min = s.above;
+                        sx = s.x;
+                        sy = s.y;
+                    }
+                } if (s.y < n-1) {
+                    if (!maze[sx][sy].cb && s.below<min && !Vt.contains(maze[s.x][s.y+1])) {
+                        min = s.below;
+                        sx = s.x;
+                        sy = s.y;
+                    }
+                } if (s.x > 0) {
+                    if (!maze[sx][sy].cl && s.left<min && !Vt.contains(maze[s.x-1][s.y])) {
+                        min = s.left;
+                        sx = s.x;
+                        sy = s.y;
+                    }
+                } if (s.x < n-1) {
+                    if (!maze[sx][sy].cr && s.right<min && !Vt.contains(maze[s.x][s.y+1])) {
+                        min = s.right;
+                        sx = s.x;
+                        sy = s.y;
+                    }
                 }
             }
 
@@ -106,6 +115,7 @@ public class maze {
         }
 
         for (int i = 0; i < n; i++) System.out.print(" _");
+        System.out.println();
         for (int i = 0; i < n; i++) {
             System.out.print("|");
             for (int j = 0; j < n; j++) {
@@ -114,7 +124,6 @@ public class maze {
                 if(!maze[i][j].cr) System.out.print("|");
                 else System.out.print(" ");
             }
-            System.out.println("");
         }
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
