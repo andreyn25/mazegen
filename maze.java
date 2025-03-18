@@ -2,7 +2,7 @@ import java.util.*;
 
 class space {
     public double above, below, left, right;
-    public boolean ca, cb, cl, cr;
+    public boolean ca, cb, cl, cr = false;
     public int x, y;
 }
 public class maze {
@@ -60,28 +60,37 @@ public class maze {
         //Now to initialize connections by choosing cheapest
         //Prim
         ArrayList<space> Vt = new ArrayList<>();
+        Vt.add(maze[0][0]);
 
         while (Vt.size() < n*n) {
             double min = Double.MAX_VALUE;
             int sx = 0;
             int sy=0;
             for (space s: Vt) {
-                if (!maze[sx][sy].ca && s.above<min && !Vt.contains(maze[s.x][s.y-1])) {
-                    min = s.above;
-                    sx = s.x;
-                    sy = s.y;
-                } if (!maze[sx][sy].cb && s.below<min && !Vt.contains(maze[s.x][s.y+1])) {
-                    min = s.below;
-                    sx = s.x;
-                    sy = s.y;
-                } if (!maze[sx][sy].cl && s.left<min && !Vt.contains(maze[s.x-1][s.y])) {
-                    min = s.left;
-                    sx = s.x;
-                    sy = s.y;
-                } if (!maze[sx][sy].cr && s.right<min && !Vt.contains(maze[s.x][s.y+1])) {
-                    min = s.right;
-                    sx = s.x;
-                    sy = s.y;
+                if (s.y > 0) {
+                    if (!maze[sx][sy].ca && s.above<min && !Vt.contains(maze[s.x][s.y-1])) {
+                        min = s.above;
+                        sx = s.x;
+                        sy = s.y;
+                    }
+                } if (s.y < n-1) {
+                    if (!maze[sx][sy].cb && s.below<min && !Vt.contains(maze[s.x][s.y+1])) {
+                        min = s.below;
+                        sx = s.x;
+                        sy = s.y;
+                    }
+                } if (s.x > 0) {
+                    if (!maze[sx][sy].cl && s.left<min && !Vt.contains(maze[s.x-1][s.y])) {
+                        min = s.left;
+                        sx = s.x;
+                        sy = s.y;
+                    }
+                } if (s.x < n-1) {
+                    if (!maze[sx][sy].cr && s.right<min && !Vt.contains(maze[s.x][s.y+1])) {
+                        min = s.right;
+                        sx = s.x;
+                        sy = s.y;
+                    }
                 }
             }
 
