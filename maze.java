@@ -60,6 +60,7 @@ public class maze {
         //Now to initialize connections by choosing cheapest
         //Prim
         ArrayList<space> Vt = new ArrayList<>();
+        Vt.add(maze[0][0]);
 
         while (Vt.size() < n*n) {
             double min = Double.MAX_VALUE;
@@ -113,11 +114,12 @@ public class maze {
                 if(!maze[i][j].cr) System.out.print("|");
                 else System.out.print(" ");
             }
+            System.out.println("");
         }
         for (int i = 0; i < n; i++) System.out.print(" _");
     }
 
-    public String[][] mazify (space[][] maze) {
+    /*public String[][] mazify (space[][] maze) {
         String[][] m = new String[maze.length][maze.length];
         space s = maze[0][0];
         for (int i = 0; i < maze.length; i++) {
@@ -133,5 +135,5 @@ public class maze {
             System.out.println("");
         }
         return m;
-    }
+    }*/
 }
