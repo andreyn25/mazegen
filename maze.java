@@ -3,6 +3,7 @@ import java.util.*;
 class space {
     public double above, below, left, right;
     public boolean ca, cb, cl, cr;
+    public int x, y;
 }
 public class maze {
 
@@ -49,22 +50,17 @@ public class maze {
             maze[i][n-1].right = Double.MAX_VALUE;
         }
 
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                maze[i][j].x = i;
+                maze[i][j].y = i;
+            }
+        }
+
         //Now to initialize connections by choosing cheapest
         //Prim or kruskal
         
 
         for (int i = 0; i < n; i++) System.out.print(" _");
-    }
-
-    public int cheapestEdge(space[][] maze, int x, int y) {
-        double cheapest = 0;
-        if (maze[x][y].cl) {
-            cheapest = maze[x][y].left;
-        }
-
-        maze[x+1][y]
-        maze[x][y-1]
-        maze[x-1][y+1]
-        return 0;   
     }
 }
