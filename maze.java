@@ -123,6 +123,7 @@ public class maze {
                 if(!maze[i][j].cr) System.out.print("|");
                 else System.out.print(" ");
             }
+            System.out.println("");
         }
     }
 
