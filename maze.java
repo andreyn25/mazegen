@@ -105,5 +105,15 @@ public class maze {
         }
 
         for (int i = 0; i < n; i++) System.out.print(" _");
+        for (int i = 0; i < n; i++) {
+            System.out.print("|");
+            for (int j = 0; j < n; j++) {
+                if(!maze[i][j].cb) System.out.print("_");
+                else System.out.print(" ");
+                if(!maze[i][j].cr) System.out.print("|");
+                else System.out.print(" ");
+            }
+        }
+        for (int i = 0; i < n; i++) System.out.print(" _");
     }
 }
